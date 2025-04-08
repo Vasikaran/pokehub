@@ -21,6 +21,7 @@
 
 ## 🏗️ Monorepo Structure
 
+```markdown
 pokehub/
 ├── packages/
 │ ├── components/ → Shared UI components
@@ -30,8 +31,7 @@ pokehub/
 ├── Dockerfile
 ├── lerna.json
 └── package.json
-
-````
+```
 
 ---
 
@@ -63,7 +63,7 @@ docker build -t pokehub .
 
 # Run the container
 docker run -p 3000:3000 pokehub
-````
+```
 
 ---
 
