@@ -1,4 +1,3 @@
-```markdown
 # 🧩 PokeHub – Pokémon Explorer (Mono Repo)
 
 > A Next.js 15 app with Redux, built using a mono-repo structure and Lerna. Displays a list of Pokémon with detailed info, powered by the [PokéAPI](https://pokeapi.co/).
@@ -21,7 +20,6 @@
 ---
 
 ## 🏗️ Monorepo Structure
-```
 
 pokehub/
 ├── packages/
