@@ -2,9 +2,6 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./button";
 
-/**
- * Button component that extends Material UI Button with custom styling.
- */
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
@@ -49,9 +46,6 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-/**
- * Default button with primary color and contained variant
- */
 export const Default: Story = {
   args: {
     children: "Button",
@@ -60,9 +54,6 @@ export const Default: Story = {
   },
 };
 
-/**
- * Button with outlined variant
- */
 export const Outlined: Story = {
   args: {
     children: "Outlined Button",
@@ -71,9 +62,6 @@ export const Outlined: Story = {
   },
 };
 
-/**
- * Button with text variant
- */
 export const Text: Story = {
   args: {
     children: "Text Button",
@@ -82,9 +70,6 @@ export const Text: Story = {
   },
 };
 
-/**
- * Collection of buttons with different colors
- */
 export const Colors: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
@@ -110,9 +95,6 @@ export const Colors: Story = {
   ),
 };
 
-/**
- * Collection of buttons with different sizes
- */
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
@@ -129,9 +111,6 @@ export const Sizes: Story = {
   ),
 };
 
-/**
- * Disabled button
- */
 export const Disabled: Story = {
   args: {
     children: "Disabled Button",
@@ -141,9 +120,6 @@ export const Disabled: Story = {
   },
 };
 
-/**
- * Full width button that takes the entire width of its container
- */
 export const FullWidth: Story = {
   args: {
     children: "Full Width Button",
@@ -153,9 +129,6 @@ export const FullWidth: Story = {
   },
 };
 
-/**
- * Button with startIcon and endIcon
- */
 export const WithIcons: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>

@@ -1,6 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 
-// Pokemon type colors for theming
 export const typeColors = {
   normal: "#A8A77A",
   fire: "#EE8130",
@@ -25,10 +24,10 @@ export const typeColors = {
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#EF5350", // Pokemon Red
+      main: "#EF5350",
     },
     secondary: {
-      main: "#42A5F5", // Pokemon Blue
+      main: "#42A5F5",
     },
     background: {
       default: "#f5f5f5",

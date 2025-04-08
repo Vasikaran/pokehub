@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchPokemonDetails } from "@/store/slices/pokemonSlice";
 import Layout from "@/components/layout";
 import {
-  Grid,
   Box,
   Typography,
   Paper,
@@ -12,12 +11,15 @@ import {
   LinearProgress,
   Divider,
 } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import { Button } from "@pokehub/components";
 import { typeColors } from "@pokehub/utils";
+import Image from "next/image";
+import { PokemonAbility, PokemonStat, PokemonType } from "@/types/types";
 
 export default function PokemonDetail() {
   const router = useRouter();
-  const { name } = router.query;
+  const { name } = router.query as { name?: string };
   const dispatch = useAppDispatch();
   const { pokemonDetails, loading, error } = useAppSelector(
     (state) => state.pokemon
@@ -81,7 +83,7 @@ export default function PokemonDetail() {
       <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
         <Grid container spacing={4}>
           {/* Pokemon Image */}
-          <Grid item xs={12} md={4}>
+          <Grid>
             <Box
               sx={{
                 display: "flex",
@@ -91,7 +93,7 @@ export default function PokemonDetail() {
                 p: 2,
               }}
             >
-              <img
+              <Image
                 src={
                   pokemonDetails.sprites?.front_default ||
                   `/api/placeholder/200/200?text=${pokemonDetails.name}`
@@ -102,6 +104,8 @@ export default function PokemonDetail() {
                   maxWidth: 300,
                   height: "auto",
                 }}
+                width={300}
+                height={300}
               />
             </Box>
 
@@ -114,7 +118,7 @@ export default function PokemonDetail() {
                 flexWrap: "wrap",
               }}
             >
-              {pokemonDetails.types?.map((type: any) => (
+              {pokemonDetails.types?.map((type: PokemonType) => (
                 <Chip
                   key={type.type.name}
                   label={type.type.name}
@@ -130,8 +134,7 @@ export default function PokemonDetail() {
             </Box>
           </Grid>
 
-          {/* Pokemon Details */}
-          <Grid item xs={12} md={8}>
+          <Grid>
             <Typography
               variant="h4"
               sx={{ textTransform: "capitalize", mb: 2 }}
@@ -146,7 +149,7 @@ export default function PokemonDetail() {
               <Typography variant="h6" sx={{ mb: 1 }}>
                 Base Stats
               </Typography>
-              {pokemonDetails.stats?.map((stat: any) => (
+              {pokemonDetails.stats?.map((stat: PokemonStat) => (
                 <Box key={stat.stat.name} sx={{ mb: 1 }}>
                   <Box
                     sx={{ display: "flex", justifyContent: "space-between" }}
@@ -168,37 +171,39 @@ export default function PokemonDetail() {
             <Divider sx={{ my: 2 }} />
 
             <Grid container spacing={2}>
-              <Grid item xs={6}>
-                <Paper elevation={1} sx={{ p: 2 }}>
+              <Grid>
+                <Paper elevation={1} sx={{ p: 2, height: "100%" }}>
                   <Typography variant="subtitle2">Height</Typography>
                   <Typography>
                     {(pokemonDetails.height / 10).toFixed(1)} m
                   </Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={6}>
-                <Paper elevation={1} sx={{ p: 2 }}>
+              <Grid>
+                <Paper elevation={1} sx={{ p: 2, height: "100%" }}>
                   <Typography variant="subtitle2">Weight</Typography>
                   <Typography>
                     {(pokemonDetails.weight / 10).toFixed(1)} kg
                   </Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={12}>
-                <Paper elevation={1} sx={{ p: 2 }}>
+              <Grid>
+                <Paper elevation={1} sx={{ p: 2, height: "100%" }}>
                   <Typography variant="subtitle2">Abilities</Typography>
                   <Box
                     sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}
                   >
-                    {pokemonDetails.abilities?.map((ability: any) => (
-                      <Chip
-                        key={ability.ability.name}
-                        label={ability.ability.name}
-                        size="small"
-                        sx={{ textTransform: "capitalize" }}
-                        variant={ability.is_hidden ? "outlined" : "filled"}
-                      />
-                    ))}
+                    {pokemonDetails.abilities?.map(
+                      (ability: PokemonAbility) => (
+                        <Chip
+                          key={ability.ability.name}
+                          label={ability.ability.name}
+                          size="small"
+                          sx={{ textTransform: "capitalize" }}
+                          variant={ability.is_hidden ? "outlined" : "filled"}
+                        />
+                      )
+                    )}
                   </Box>
                 </Paper>
               </Grid>

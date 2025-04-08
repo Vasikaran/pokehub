@@ -10,7 +10,6 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchPokemons, setPagination } from "../store/slices/pokemonSlice";
 import Layout from "../components/layout";
 import { Paper, Typography } from "@mui/material";
-import { Button } from "@pokehub/components";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
@@ -20,7 +19,12 @@ const columns: GridColDef[] = [
     width: 200,
     flex: 1,
     renderCell: (params) => (
-      <Typography sx={{ textTransform: "capitalize" }}>
+      <Typography
+        sx={{
+          textTransform: "capitalize",
+          fontWeight: "bold",
+        }}
+      >
         {params.value}
       </Typography>
     ),
@@ -84,6 +88,11 @@ export default function Home() {
           sx={{
             "& .MuiDataGrid-cell:hover": {
               color: "primary.main",
+              cursor: "pointer",
+            },
+            "& .MuiDataGrid-cell": {
+              alignItems: "center",
+              display: "flex",
             },
           }}
         />

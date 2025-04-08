@@ -3,9 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { PokemonCard } from "./pokemon-card";
 import { action } from "@storybook/addon-actions";
 
-/**
- * PokemonCard component displays a Pokemon with its name, image, and type information in a card format.
- */
 const meta: Meta<typeof PokemonCard> = {
   title: "Components/PokemonCard",
   component: PokemonCard,
@@ -36,18 +33,12 @@ const meta: Meta<typeof PokemonCard> = {
 export default meta;
 type Story = StoryObj<typeof PokemonCard>;
 
-/**
- * Default PokemonCard with minimal information
- */
 export const Default: Story = {
   args: {
     name: "pikachu",
   },
 };
 
-/**
- * PokemonCard with a custom image
- */
 export const WithImage: Story = {
   args: {
     name: "charizard",
@@ -56,9 +47,6 @@ export const WithImage: Story = {
   },
 };
 
-/**
- * PokemonCard with types displayed as chips
- */
 export const WithTypes: Story = {
   args: {
     name: "bulbasaur",
@@ -68,9 +56,6 @@ export const WithTypes: Story = {
   },
 };
 
-/**
- * PokemonCard with multiple types
- */
 export const WithMultipleTypes: Story = {
   args: {
     name: "dragalge",
@@ -80,9 +65,6 @@ export const WithMultipleTypes: Story = {
   },
 };
 
-/**
- * Interactive PokemonCard with click handler
- */
 export const Interactive: Story = {
   args: {
     name: "eevee",
@@ -93,9 +75,6 @@ export const Interactive: Story = {
   },
 };
 
-/**
- * Collection of various Pokemon cards displayed in a grid
- */
 export const PokemonCollection: Story = {
   render: () => (
     <div
@@ -146,9 +125,6 @@ export const PokemonCollection: Story = {
   ),
 };
 
-/**
- * PokemonCard with a long name to test text wrapping
- */
 export const LongName: Story = {
   args: {
     name: "crabominable",
@@ -158,9 +134,6 @@ export const LongName: Story = {
   },
 };
 
-/**
- * PokemonCard without an image, using a placeholder
- */
 export const NoImage: Story = {
   args: {
     name: "missingno",

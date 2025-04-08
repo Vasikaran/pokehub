@@ -1,20 +1,5 @@
+import { PokemonState } from "@/types/types";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-
-export interface Pokemon {
-  name: string;
-  url: string;
-  // Add more properties as needed
-}
-
-interface PokemonState {
-  pokemons: Pokemon[];
-  pokemonDetails: any | null;
-  loading: boolean;
-  error: string | null;
-  count: number;
-  currentPage: number;
-  pageSize: number;
-}
 
 const initialState: PokemonState = {
   pokemons: [],
@@ -65,7 +50,6 @@ const pokemonSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Fetch pokemons cases
       .addCase(fetchPokemons.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -79,7 +63,6 @@ const pokemonSlice = createSlice({
         state.loading = false;
         state.error = action.error.message || "Failed to fetch pokemons";
       })
-      // Fetch pokemon details cases
       .addCase(fetchPokemonDetails.pending, (state) => {
         state.loading = true;
         state.error = null;
