@@ -55,7 +55,7 @@ This app is deployed on **Render** with a Dockerfile located at the root.
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/pokehub.git
+git clone https://github.com/Vasikaran/pokehub.git
 cd pokehub
 
 # Build Docker image
