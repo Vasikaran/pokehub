@@ -1,112 +1,102 @@
-# **PokeHub Monorepo**
+```markdown
+# 🧩 PokeHub – Pokémon Explorer (Mono Repo)
 
-This is a monorepo for the **PokeHub** project, built using **Lerna**, **TypeScript**, and **Webpack**. The repository includes a **Next.js** app, a component library, and a utility library.
+> A Next.js 15 app with Redux, built using a mono-repo structure and Lerna. Displays a list of Pokémon with detailed info, powered by the [PokéAPI](https://pokeapi.co/).
+
+🌐 **Live Demo**: [https://pokehub-vws6.onrender.com](https://pokehub-vws6.onrender.com)
 
 ---
 
-## 🚀 **Project Structure**
+## 📦 Tech Stack
 
-The repository is organized into the following workspaces:
+- **Next.js 15** with **Pages Router**
+- **TypeScript**
+- **Redux Toolkit** with `next-redux-wrapper`
+- **@mui/x-data-grid** for paginated tables
+- **Lerna** mono-repo
+- **Dockerized** for production deployment
+- **ESM/CJS packages** for reusable utilities & components
+- **Storybook** Storybook-ready component structure
 
+---
+
+## 🏗️ Monorepo Structure
 ```
+
 pokehub/
-├── apps/
-│   └── pokehub/          # Next.js app (Main PokeHub App)
 ├── packages/
-│   ├── components/       # React Component Library (Webpack + TypeScript)
-│   └── utils/            # Utility Library (Webpack + TypeScript)
-├── .gitignore
-├── package.json
+│ ├── components/ → Shared UI components
+│ └── utils/ → Reusable helper functions
+├── apps/
+│ └── pokehub/ → Main Next.js application
+├── Dockerfile
 ├── lerna.json
-├── tsconfig.json
-└── README.md
-```
+└── package.json
+
+````
 
 ---
 
-## 📦 **Workspaces**
+## ⚙️ Features
 
-### 1. **@pokehub/components**
-
-- React component library built with **Webpack** and **TypeScript**.
-- Exports components as **ESM** modules.
-- Supports type exports for TypeScript integration.
-
-### 2. **@pokehub/utils**
-
-- Utility library built with **Webpack** and **TypeScript**.
-- Includes reusable TypeScript functions.
-- Outputs ESM and type definitions.
-
-### 3. **pokehub**
-
-- Next.js app built with **Redux**, **next-redux-wrapper**, and **TypeScript**.
-- Uses the component and utility libraries directly from the monorepo.
-- Fetches Pokémon data from [PokéAPI](https://pokeapi.co/).
-- Displays Pokémon data in an **MUI DataGrid** with pagination.
+- Lists Pokémon with pagination using MUI DataGrid
+- Click on any Pokémon to view detailed stats on a separate page
+- Maintains Redux state across navigation (client-side routing)
+- Reusable UI components and utility functions shared via mono-repo
+- Docker-ready for containerized deployments
 
 ---
 
-## 🛠️ **Setup and Installation**
+## 🚀 Deployment
 
-### **1. Install Dependencies**
+This app is deployed on **Render** with a Dockerfile located at the root.
 
-From the root directory, run:
+**Live Link**: [https://pokehub-vws6.onrender.com](https://pokehub-vws6.onrender.com)
+
+### 🐳 Docker Instructions (for local dev or custom deployment)
+
+```bash
+# Clone the repo
+git clone https://github.com/your-username/pokehub.git
+cd pokehub
+
+# Build Docker image
+docker build -t pokehub .
+
+# Run the container
+docker run -p 3000:3000 pokehub
+````
+
+---
+
+## 📚 Scripts
+
+Run these from the root or using Lerna:
 
 ```bash
 npm install
-```
 
-### **2. Build All Packages**
-
-To build all packages (components and utils):
-
-```bash
-npm run build
-```
-
-### **3. Start the Next.js App**
-
-To run the app and packages locally:
-
-```bash
+# Run development server
 npm run dev
-```
 
----
-
-## 🚧 **Development**
-
-### **Build Component Library**
-
-To build the component library:
-
-```bash
-cd packages/components
+# Build the project
 npm run build
-```
 
-### **Build Utility Library**
-
-To build the utility library:
-
-```bash
-cd packages/utils
-npm run build
 ```
 
 ---
 
-## ✅ **Testing**
+## ✅ Requirements Coverage
 
-To run tests:
-
-```bash
-npm test
-```
-
----
-
-## 📄 **License**
-
-This project is licensed under the **MIT License**.
+| Feature                                         | Status  |
+| ----------------------------------------------- | ------- |
+| Mono-repo with Lerna                            | ✅ Done |
+| Components & Utils packages                     | ✅ Done |
+| Packages exported as ESM/CJS                    | ✅ Done |
+| Next.js (Pages Router) + Redux                  | ✅ Done |
+| Pokémon list with pagination (DataGrid)         | ✅ Done |
+| Pokémon detail page with routing                | ✅ Done |
+| Redux state maintained between navigation       | ✅ Done |
+| Dockerization                                   | ✅ Done |
+| Production-ready code (linted, clean structure) | ✅ Done |
+| Storybook for components                        | ✅ Done |
