@@ -4,31 +4,40 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const config = {
+export default {
   entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "index.js",
+    filename: "index.esm.js",
     library: {
       type: "module",
     },
     clean: true,
   },
+  experiments: {
+    outputModule: true,
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  externals: {
+    react: "react",
+    "react-dom": "react-dom",
+    "react/jsx-runtime": "react/jsx-runtime",
+  },
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: "ts-loader",
+        test: /\.ts|\.tsx?$/,
+        use: {
+          loader: "ts-loader",
+          options: {
+            transpileOnly: false,
+          },
+        },
         exclude: /node_modules/,
       },
     ],
   },
-  resolve: {
-    extensions: [".ts"],
-  },
-  experiments: {
-    outputModule: true,
-  },
+  externalsType: "module",
 };
-
-export default config;

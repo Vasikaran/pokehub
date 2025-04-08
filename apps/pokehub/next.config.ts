@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
+  transpilePackages: ["@pokehub/components", "@pokehub/utils"],
   images: {
     remotePatterns: [
       {
@@ -14,6 +15,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  output: "standalone",
 };
 
 export default nextConfig;

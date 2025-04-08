@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist",
     "dev": "webpack --watch --mode=development",
-    "build": "npm run clean && webpack --mode=production",
+    "build": "webpack --mode=production",
     "build:types": "tsc --emitDeclarationOnly",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
